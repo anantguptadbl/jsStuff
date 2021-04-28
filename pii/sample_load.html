@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    </head>
+    <script>
+        $.getScript("https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest", function ()
+        {
+            alert ("Loaded tensorflow.js");
+            console.log(tf);
+        });
+        const model = await tf.loadLayersModel('https://127.0.0.1:8000/pii_model_20210426_tfjs/model.json');
+        console.log("Loaded");
+
+    </script>
+</html>
