@@ -8,16 +8,29 @@ var peerConnTwo;
 var offerOptions = { offerToReceiveAudio: 1, offerToReceiveVideo: 1};
 
 //set up click handler
-connectButton.onclick = startConnection;
+connectButton.onclick = startConnection1;
+
+function startConnection1()
+{
+    navigator.mediaDevices.getDisplayMedia({video: true}).then(videoOneSource, handleError);
+}
 
 //get video for peer one
-navigator.getUserMedia = navigator.webkitGetUserMedia;
-navigator.getUserMedia({video: true}, videoOneSource, function(){ console.log("No stream")});
+//navigator.getUserMedia = navigator.webkitGetUserMedia
+//navigator.getUserMedia({video: true}, videoOneSource, function(){ console.log("No stream")});
+
 
 //supporting functions
+function handleError()
+{
+    console.log("Error dude");
+}
+
 function videoOneSource(stream) {
   videoStream = stream;
-  videoOne.src = window.URL.createObjectURL(stream);
+  //videoOne.src = window.URL.createObjectURL(stream);
+  videoOne.srcObject = stream;
+  startConnection();
 }
 
 function startConnection() {
